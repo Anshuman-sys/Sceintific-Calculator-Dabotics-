@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sceintific Calculator</title>
+    <link rel="stylesheet" href="Sceintific Calculator.css">
+</head>
+
+<body>
+    <div class="jerry">
+        <div class="container" >
+            <div class="dome" >
+                Sceintific Calculator
+            </div>
+            <div class="display">
+                <input id="andy"  onfocus="play()" type="text" placeholder="0">
+            </div>
+    
+            <div class="btns">
+                <div class="row">
+                    <button id="ce" onclick="cross()">CE</button>
+                    <button onclick="factorial()">x!</button>
+                    <button class="btn">(</button>
+                    <button class="btn">)</button>
+                    <button class="btn">%</button>
+                    <button id="ac" onclick="andy.value=''">AC</button>
+                </div>
+    
+                <div class="row">
+                    <button id="nun" onclick="sine()">sin</button>
+                    <button onclick="pi()">π</button>
+                    <button class="btn">7</button>
+                    <button class="btn">8</button>
+                    <button class="btn">9</button>
+                    <button class="btn">÷</button>
+                </div>
+    
+                <div class="row">
+                    <button onclick="cosine()">cos</button>
+                    <button onclick="logarithmic()">log</button>
+                    <button class="btn">4</button>
+                    <button class="btn">5</button>
+                    <button class="btn">6</button>
+                    <button class="btn">×</button>
+                </div>
+    
+                <div class="row">
+                    <button onclick="tangent()">tan</button>
+                    <button onclick="squareroot()">√</button>
+                    <button class="btn">1</button>
+                    <button class="btn">2</button>
+                    <button class="btn">3</button>
+                    <button class="btn">-</button>
+                </div>
+    
+                <div class="row">
+                     <button onclick="exponential()">e</button>
+                    <button onclick="power()">x <span style="position: relative; bottom: .4em; right: .1em;">y</span>
+                    </button>
+                    <button class="btn">0</button>
+                    <button class="btn" onclick="pause()">.</button>
+                    <button id="eval" onclick="andy.value=eval(andy.value)">=</button>
+                    <button class="btn">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var andy = document.querySelector('#andy');
+        var btn = document.querySelectorAll('.btn');
+        for (item of btn) {
+            item.addEventListener('click', (e) => {
+                btntext = e.target.innerText;
+
+                if (btntext == '×') {
+                    btntext = '*';
+                }
+
+                if (btntext == '÷') {
+                    btntext = '/';
+                }
+                andy.value += btntext;
+            });
+        }
+
+       
+        function play(){
+            var sound = new Audio("sound.mp3");
+            sound.play();
+        }
+        function pause()
+        {
+            sound.pause();
+        }
+
+        function sine() {
+            andy.value = Math.sin(andy.value);
+        }
+
+        function cosine() {
+            andy.value = Math.cos(andy.value);
+        }
+
+        function tangent() {
+            andy.value = Math.tan(andy.value);
+        }
+
+        function power() {
+            andy.value = Math.pow(andy.value, 2);
+        }
+
+        function squareroot() {
+            andy.value = Math.sqrt(andy.value, 2);
+        }
+
+        function logarithmic() {
+            andy.value = Math.log(andy.value);
+        }
+
+        function pi() {
+            andy.value = 3.14159265359;
+        }
+
+        function exponential() {
+            andy.value = 2.71828182846;
+        }
+
+        function factorial() {
+            var i, num, f;
+            f = 1
+            num = andy.value;
+            for (i = 1; i <= num; i++) {
+                f = f * i;
+            }
+
+            i = i - 1;
+
+            andy.value = f;
+        }
+
+        function cross() {
+            andy.value = andy.value.substr(0, andy.value.length - 1);
+        }
+
+    </script>
+
+</body>
+
+</html>
